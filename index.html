@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Packet Sender</title>
+</head>
+<body>
+    <h1>📦 Отправка пакета</h1>
+    <button onclick="sendPacket()">Отправить</button>
+    <div id="result" style="margin-top: 10px;"></div>
+
+    <script>
+        function sendPacket() {
+            fetch('/send_packet', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('result').innerText = 
+                        `Пакет получен на сервере в ${data.received_at}`;
+                });
+        }
+    </script>
+</body>
+</html>
